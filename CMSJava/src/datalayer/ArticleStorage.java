@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import businesslayer.Article;
 
@@ -172,6 +174,33 @@ public class ArticleStorage {
 		System.out
 				.println("All tables created successfully and connections closed.");
 
+	}
+	
+	public static List<String> getArticles(){
+		List<String> result = new ArrayList<>();
+		
+		String queryString = "SELECT TEXT FROM ARTICLE";
+
+		try {
+			initializeDatabaseConnection();
+
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(queryString);
+
+			while (rs.next()) {
+				String content = rs.getString("TEXT") + "\n" + "\n";
+				result.add(content);
+			}
+
+			disconnectDatabaseConnection();
+
+
+		} catch (SQLException e) {
+			System.out.println("SQL Exception: " + e);
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }
