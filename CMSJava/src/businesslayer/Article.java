@@ -1,5 +1,7 @@
 package businesslayer;
 
+import datalayer.ArticleStorage;
+
 public class Article {
 	private String contents;
 	
@@ -13,6 +15,10 @@ public class Article {
 
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+	
+	public void addToDatabase(){
+		ArticleStorage.addArticleToDatabase(this);
 	}
 
 	@Override
