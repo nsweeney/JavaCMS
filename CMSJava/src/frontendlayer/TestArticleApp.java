@@ -9,7 +9,7 @@ public class TestArticleApp {
 
 	public static void main(String[] args) {
 		// create db tables
-		// ArticleStorage.createDBTables();
+		//ArticleStorage.createDBTables();
 
 		Article article = new Article("This\nis\na\ntest.");
 		// System.out.println(article);
@@ -32,9 +32,8 @@ public class TestArticleApp {
 		System.out.println(articleContents);
 
 		// test updating article
-		ArticleStorage.updateArticle(1,
-				"Test data 2 \n from TestArticle class.");
-
+//		ArticleStorage.updateArticle(1,
+//				"Test data 2 \n from TestArticle class.");
 	}
 
 }

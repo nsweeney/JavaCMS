@@ -6,9 +6,21 @@ import datalayer.ArticleStorage;
 import frontendlayer.EditGUI;
 import frontendlayer.ViewGUI;
 
+/**
+ * Used to store articles and query articles in the database.
+ */
 public class Article {
+	/**
+	 * Articles contents.
+	 */
 	private String contents;
 
+	/**
+	 * Article constructor.
+	 * 
+	 * @param contents
+	 *            -this is the article
+	 */
 	public Article(String contents) {
 		setContents(contents);
 	}
@@ -21,22 +33,27 @@ public class Article {
 		this.contents = contents;
 	}
 
+	/**
+	 * Adds an article in the database.
+	 */
 	public void addToDatabase() {
 		ArticleStorage.addArticleToDatabase(this);
 	}
 
+	/**
+	 * Used to display articles in the ViewGUI.
+	 */
 	public static void showArticlesFromDB() {
-		int key = 1;
 		List<String> articles = ArticleStorage.getArticles();
 		for (String content : articles) {
-			ViewGUI.getEditViewTextArea().append("Article: " + key + "\n");
-			ViewGUI.getEditViewTextArea().append(content);
-			ViewGUI.getEditViewTextArea().append("\n");
-			key++;
+			ViewGUI.getEditViewTextArea().append(content + "\n");
 		}
 
 	}
 
+	/**
+	 * Used to populate the EditGUI combobox with all the article id numbers.
+	 */
 	public static void populateEditGUIComboBox() {
 		// find article numbers
 		List<Integer> articleList = ArticleStorage.findArticleNumber();
@@ -49,26 +66,42 @@ public class Article {
 		}
 	}
 
-	public static String populateEditGUITextBoxWithContents(int articleNumber) {
+	/**
+	 * Used to search for a specific article by it's article if number.
+	 * 
+	 * @param articleNumber
+	 *            -the article you want to search for.
+	 * @return String -represent the articles contents.
+	 */
+	public static String findArticleContents(int articleNumber) {
 
 		String articleContents = ArticleStorage
 				.findArticleToEdit(articleNumber);
 		return articleContents;
 	}
 
+	/**
+	 * Updates the selected article in the database.
+	 * 
+	 * @param articleSelectedInComboBox
+	 *            -the articles article id number you want to update.
+	 * @param updatedArticleContent
+	 *            -the new content you want to be added to the article.
+	 */
 	public static void updateArticleInDatabase(
 			Integer articleSelectedInComboBox, String updatedArticleContent) {
-
-		// + 1 because if they select '1', its index is actually
-		// 0..that isnt a PK in the article table
-		ArticleStorage.updateArticle(articleSelectedInComboBox + 1,
+		ArticleStorage.updateArticle(articleSelectedInComboBox,
 				updatedArticleContent);
 	}
 
+	/**
+	 * Deletes an article in the database.
+	 * 
+	 * @param articleSelectedInComboBox
+	 *            -article id number of the article you want to delete.
+	 */
 	public static void deleteArticleInDatabase(Integer articleSelectedInComboBox) {
-		// + 1 because if they select '1', its index is actually
-		// 0..that isnt a PK in the article table
-		ArticleStorage.deleteArticle(articleSelectedInComboBox + 1);
+		ArticleStorage.deleteArticle(articleSelectedInComboBox);
 	}
 
 	@Override

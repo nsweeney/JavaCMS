@@ -30,10 +30,6 @@ public class ArticleStorage {
 	 * Used for SQL queries.
 	 */
 	private static PreparedStatement preparedSqlStatement;
-	/**
-	 * Used to hold the value of the PK for the SectionOrder.
-	 */
-	private int sectionOrderPrimaryKey;
 
 	/**
 	 * Initializes the connection to bookOrderApp.db.
@@ -85,6 +81,12 @@ public class ArticleStorage {
 		}
 	}
 
+	/**
+	 * Adds the given Article object to the SQlite database.
+	 * 
+	 * @param article
+	 *            -the article you want to save.
+	 */
 	public static void addArticleToDatabase(Article article) {
 		try {
 
@@ -128,6 +130,9 @@ public class ArticleStorage {
 		}
 	}
 
+	/**
+	 * Used to create the database and tables for this application.
+	 */
 	public static void createDBTables() {
 		/*
 		 * Used for database connection.
@@ -176,10 +181,16 @@ public class ArticleStorage {
 
 	}
 
+	/**
+	 * Searches all the articles in the database and returns them as a List of
+	 * Strings.
+	 * 
+	 * @return List<String> -representing all the articles in the database.
+	 */
 	public static List<String> getArticles() {
 		List<String> result = new ArrayList<>();
 
-		String queryString = "SELECT TEXT FROM ARTICLE";
+		String queryString = "SELECT ARTICLE_ID, TEXT FROM ARTICLE";
 
 		try {
 			initializeDatabaseConnection();
@@ -188,7 +199,8 @@ public class ArticleStorage {
 			ResultSet rs = stmt.executeQuery(queryString);
 
 			while (rs.next()) {
-				String content = rs.getString("TEXT") + "\n";
+				String content = "Article # " + rs.getInt("ARTICLE_ID") + ":"
+						+ "\n" + rs.getString("TEXT") + "\n";
 				result.add(content);
 			}
 
@@ -202,6 +214,12 @@ public class ArticleStorage {
 		return result;
 	}
 
+	/**
+	 * Returns a List of all the article id numbers in the database.
+	 * 
+	 * @return List<Integer> -representing all the article id numbers in the
+	 *         database.
+	 */
 	public static List<Integer> findArticleNumber() {
 		List<Integer> result = new ArrayList<>();
 		String queryString = "SELECT article_id FROM article";
@@ -225,6 +243,14 @@ public class ArticleStorage {
 		return result;
 	}
 
+	/**
+	 * Searches for a specific article by article id number.
+	 * 
+	 * @param articleNumber
+	 *            -the article id number of the article you want to find.
+	 * @return String -representing the article contents of the article you
+	 *         searched for.
+	 */
 	public static String findArticleToEdit(int articleNumber) {
 		String result = "";
 		String queryString = "SELECT text FROM article WHERE article_id = "
@@ -250,6 +276,14 @@ public class ArticleStorage {
 		return result;
 	}
 
+	/**
+	 * Used to update a given article in the database.
+	 * 
+	 * @param articleNumber
+	 *            -the article id of the article you want to update.
+	 * @param articleContent
+	 *            -the new content you want to add for the given article.
+	 */
 	public static void updateArticle(Integer articleNumber,
 			String articleContent) {
 		initializeDatabaseConnection();
@@ -284,6 +318,12 @@ public class ArticleStorage {
 
 	}
 
+	/**
+	 * Deletes an article in the database.
+	 * 
+	 * @param articleNumber
+	 *            -article id number of the article you want to delete.
+	 */
 	public static void deleteArticle(Integer articleNumber) {
 		initializeDatabaseConnection();
 

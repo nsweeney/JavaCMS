@@ -11,11 +11,26 @@ import javax.swing.JLabel;
 
 import businesslayer.Article;
 
+/**
+ * Main application GUI for our Article CMS program.
+ */
 public class ArticleGUI {
 
+	/**
+	 * Article apps main frame.
+	 */
 	private JFrame frmArticleCms;
+	/**
+	 * Used to open an instance of the ViewGUI dialog.
+	 */
 	private static ViewGUI viewDialog;
+	/**
+	 * Used to open an instance of the CreateGUI dialog.
+	 */
 	private static CreateGUI createDialog;
+	/**
+	 * Used to open an instance of the EditGUI dialog.
+	 */
 	private static EditGUI editDialog;
 
 	public static ViewGUI getViewEditDialog() {
@@ -67,6 +82,7 @@ public class ArticleGUI {
 		lblArticleCms.setBounds(67, 11, 80, 14);
 		frmArticleCms.getContentPane().add(lblArticleCms);
 
+		// ***Create Button
 		JButton btnCreateArticle = new JButton("Create");
 		btnCreateArticle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -84,6 +100,7 @@ public class ArticleGUI {
 		btnCreateArticle.setBounds(10, 59, 184, 23);
 		frmArticleCms.getContentPane().add(btnCreateArticle);
 
+		// ***View Button
 		JButton buttonViewArticle = new JButton("View");
 		buttonViewArticle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -101,6 +118,7 @@ public class ArticleGUI {
 		buttonViewArticle.setBounds(10, 93, 184, 23);
 		frmArticleCms.getContentPane().add(buttonViewArticle);
 
+		// ***Close Button
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -111,6 +129,7 @@ public class ArticleGUI {
 		btnClose.setBounds(105, 208, 89, 23);
 		frmArticleCms.getContentPane().add(btnClose);
 
+		// ***Edit / Delete Button
 		JButton buttonEditArticle = new JButton("Edit / Delete");
 		buttonEditArticle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
