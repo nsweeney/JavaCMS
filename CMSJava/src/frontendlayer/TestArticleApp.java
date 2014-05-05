@@ -26,6 +26,10 @@ public class TestArticleApp {
 		for(Integer articleNumber : tempList){
 			System.out.println(articleNumber);
 		}
+		
+		//find article to edit by number
+		String articleContents = ArticleStorage.findArticleToEdit(1);
+		System.out.println(articleContents);
 
 	}
 

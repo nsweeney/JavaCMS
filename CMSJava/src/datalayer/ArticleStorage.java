@@ -175,10 +175,10 @@ public class ArticleStorage {
 				.println("All tables created successfully and connections closed.");
 
 	}
-	
-	public static List<String> getArticles(){
+
+	public static List<String> getArticles() {
 		List<String> result = new ArrayList<>();
-		
+
 		String queryString = "SELECT TEXT FROM ARTICLE";
 
 		try {
@@ -194,17 +194,16 @@ public class ArticleStorage {
 
 			disconnectDatabaseConnection();
 
-
 		} catch (SQLException e) {
 			System.out.println("SQL Exception: " + e);
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
-	
-	public static List<Integer> findArticleNumber(){
-		List<Integer>  result = new ArrayList<>();
+
+	public static List<Integer> findArticleNumber() {
+		List<Integer> result = new ArrayList<>();
 		String queryString = "SELECT article_id FROM article";
 
 		try {
@@ -222,7 +221,32 @@ public class ArticleStorage {
 		} finally {
 			disconnectDatabaseConnection();
 		}
-		
+
+		return result;
+	}
+
+	public static String findArticleToEdit(int articleNumber) {
+		String result = "";
+		String queryString = "SELECT text FROM article WHERE article_id = "
+				+ articleNumber;
+
+		try {
+			initializeDatabaseConnection();
+
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(queryString);
+
+			while (rs.next()) {
+				result += rs.getString("TEXT") + "\n";
+			}
+
+			disconnectDatabaseConnection();
+
+		} catch (SQLException e) {
+			System.out.println("SQL Exception: " + e);
+			e.printStackTrace();
+		}
+
 		return result;
 	}
 

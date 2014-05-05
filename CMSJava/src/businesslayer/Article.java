@@ -40,15 +40,19 @@ public class Article {
 	public static void populateEditGUIComboBox() {
 		// find article numbers
 		List<Integer> articleList = ArticleStorage.findArticleNumber();
-		
+
 		EditGUI.getArticleNumberComboBox().removeAllItems();
 		EditGUI.getArticleNumberComboBox().validate();
 
 		for (Integer articleNumber : articleList) {
 			EditGUI.getArticleNumberComboBox().addItem(articleNumber);
 		}
+	}
+
+	public static String populateEditGUITextBoxWithContents(int articleNumber) {
 		
-		
+		String articleContents = ArticleStorage.findArticleToEdit(articleNumber);
+		return articleContents;	
 	}
 
 	@Override
