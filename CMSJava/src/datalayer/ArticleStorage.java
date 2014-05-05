@@ -284,4 +284,36 @@ public class ArticleStorage {
 
 	}
 
+	public static void deleteArticle(Integer articleNumber) {
+		initializeDatabaseConnection();
+
+		// Initialize the prepared statement.
+		try {
+			stmt = con.createStatement();
+			String sql = "DELETE FROM ARTICLE WHERE ARTICLE_ID = "
+					+ articleNumber;
+			preparedSqlStatement = con.prepareStatement(sql);
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception: " + ex);
+			ex.printStackTrace();
+		}
+
+		// Execute prepared statement.
+		try {
+			preparedSqlStatement.executeUpdate();
+
+		} catch (SQLIntegrityConstraintViolationException sqlicve) {
+			System.out.println("SQL Integrity Constraint Exception: "
+					+ sqlicve.getErrorCode());
+			sqlicve.printStackTrace();
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception: " + ex);
+			ex.printStackTrace();
+		}
+
+		disconnectDatabaseConnection();
+	}
+
 }

@@ -111,7 +111,7 @@ public class ArticleGUI {
 		btnClose.setBounds(105, 208, 89, 23);
 		frmArticleCms.getContentPane().add(btnClose);
 
-		JButton buttonEditArticle = new JButton("Edit");
+		JButton buttonEditArticle = new JButton("Edit / Delete");
 		buttonEditArticle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -127,9 +127,5 @@ public class ArticleGUI {
 		});
 		buttonEditArticle.setBounds(10, 127, 184, 23);
 		frmArticleCms.getContentPane().add(buttonEditArticle);
-
-		JButton buttonDeleteArticle = new JButton("Delete");
-		buttonDeleteArticle.setBounds(10, 161, 184, 23);
-		frmArticleCms.getContentPane().add(buttonDeleteArticle);
 	}
 }

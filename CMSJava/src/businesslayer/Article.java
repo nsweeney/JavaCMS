@@ -65,6 +65,12 @@ public class Article {
 				updatedArticleContent);
 	}
 
+	public static void deleteArticleInDatabase(Integer articleSelectedInComboBox) {
+		// + 1 because if they select '1', its index is actually
+		// 0..that isnt a PK in the article table
+		ArticleStorage.deleteArticle(articleSelectedInComboBox + 1);
+	}
+
 	@Override
 	public String toString() {
 		return "Article object contents: " + getContents();
