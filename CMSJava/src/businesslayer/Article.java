@@ -3,7 +3,7 @@ package businesslayer;
 import java.util.List;
 
 import datalayer.ArticleStorage;
-import frontendlayer.ViewEditGUI;
+import frontendlayer.ViewGUI;
 
 public class Article {
 	private String contents;
@@ -25,10 +25,13 @@ public class Article {
 	}
 	
 	public static void showArticlesFromDB(){
+		int key = 1;
 		List<String> articles = ArticleStorage.getArticles();
 		for(String content : articles){
-			ViewEditGUI.getEditViewTextArea().append(content);
-			System.out.println("\n");
+			ViewGUI.getEditViewTextArea().append("Article: " + key + "\n");
+			ViewGUI.getEditViewTextArea().append(content);
+			ViewGUI.getEditViewTextArea().append("\n");
+			key++;
 		}
 		
 	}

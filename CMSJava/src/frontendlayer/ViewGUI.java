@@ -13,13 +13,13 @@ import javax.swing.border.EmptyBorder;
 
 import businesslayer.Article;
 
-public class ViewEditGUI extends JDialog {
+public class ViewGUI extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private static JTextArea editViewTextArea;
+	private static JTextArea viewTextArea;
 
 	public static JTextArea getEditViewTextArea() {
-		return editViewTextArea;
+		return viewTextArea;
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class ViewEditGUI extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			ViewEditGUI dialog = new ViewEditGUI();
+			ViewGUI dialog = new ViewGUI();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -38,16 +38,17 @@ public class ViewEditGUI extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ViewEditGUI() {
+	public ViewGUI() {
+		setTitle("View Articles");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			editViewTextArea = new JTextArea();
-			editViewTextArea.setBounds(10, 11, 414, 207);
-			contentPanel.add(editViewTextArea);
+			viewTextArea = new JTextArea();
+			viewTextArea.setBounds(10, 11, 414, 207);
+			contentPanel.add(viewTextArea);
 		}
 		{
 			JPanel buttonPane = new JPanel();

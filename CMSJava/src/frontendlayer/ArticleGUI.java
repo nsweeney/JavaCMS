@@ -12,10 +12,10 @@ import javax.swing.JLabel;
 public class ArticleGUI {
 
 	private JFrame frmArticleCms;
-	private static ViewEditGUI viewEditDialog;
+	private static ViewGUI viewEditDialog;
 	private static CreateGUI createDialog;
 
-	public static ViewEditGUI getViewEditDialog() {
+	public static ViewGUI getViewEditDialog() {
 		return viewEditDialog;
 	}
 
@@ -81,7 +81,7 @@ public class ArticleGUI {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					// Open the ViewEditGUI dialog
-					viewEditDialog = new ViewEditGUI();
+					viewEditDialog = new ViewGUI();
 					viewEditDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					viewEditDialog.setVisible(true);
 				} catch (Exception e) {

@@ -188,7 +188,7 @@ public class ArticleStorage {
 			ResultSet rs = stmt.executeQuery(queryString);
 
 			while (rs.next()) {
-				String content = rs.getString("TEXT") + "\n" + "\n";
+				String content = rs.getString("TEXT") + "\n";
 				result.add(content);
 			}
 

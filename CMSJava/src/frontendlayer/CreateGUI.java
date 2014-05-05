@@ -37,6 +37,7 @@ public class CreateGUI extends JDialog {
 	 * Create the dialog.
 	 */
 	public CreateGUI() {
+		setTitle("Create Articles");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
