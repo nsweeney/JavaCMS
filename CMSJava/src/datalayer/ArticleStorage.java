@@ -202,5 +202,28 @@ public class ArticleStorage {
 		
 		return result;
 	}
+	
+	public static List<Integer> findArticleNumber(){
+		List<Integer>  result = new ArrayList<>();
+		String queryString = "SELECT article_id FROM article";
+
+		try {
+			initializeDatabaseConnection();
+
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(queryString);
+
+			while (rs.next()) {
+				result.add(rs.getInt(1));
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL Exception: " + e);
+			e.printStackTrace();
+		} finally {
+			disconnectDatabaseConnection();
+		}
+		
+		return result;
+	}
 
 }

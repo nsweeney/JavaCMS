@@ -20,6 +20,12 @@ public class TestArticleApp {
 		for(String article1 : articles){
 			System.out.println(article1);
 		}
+		
+		//find article numbers
+		List<Integer> tempList = ArticleStorage.findArticleNumber();
+		for(Integer articleNumber : tempList){
+			System.out.println(articleNumber);
+		}
 
 	}
 
