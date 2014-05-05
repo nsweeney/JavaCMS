@@ -70,7 +70,7 @@ public class CreateGUI extends JDialog {
 				getRootPane().setDefaultButton(addArticleBtn);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Close");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						ArticleGUI.getCreateDialog().dispose();

@@ -250,4 +250,38 @@ public class ArticleStorage {
 		return result;
 	}
 
+	public static void updateArticle(Integer articleNumber,
+			String articleContent) {
+		initializeDatabaseConnection();
+
+		// Initialize the prepared statement.
+		try {
+			stmt = con.createStatement();
+			String sql = "UPDATE ARTICLE SET TEXT = '" + articleContent
+					+ "' WHERE ARTICLE_ID = " + articleNumber;
+			preparedSqlStatement = con.prepareStatement(sql);
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception: " + ex);
+			ex.printStackTrace();
+		}
+
+		// Execute prepared statement.
+		try {
+			preparedSqlStatement.executeUpdate();
+
+		} catch (SQLIntegrityConstraintViolationException sqlicve) {
+			System.out.println("SQL Integrity Constraint Exception: "
+					+ sqlicve.getErrorCode());
+			sqlicve.printStackTrace();
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception: " + ex);
+			ex.printStackTrace();
+		}
+
+		disconnectDatabaseConnection();
+
+	}
+
 }

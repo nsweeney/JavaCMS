@@ -62,18 +62,19 @@ public class ArticleGUI {
 		frmArticleCms.setBounds(100, 100, 220, 280);
 		frmArticleCms.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmArticleCms.getContentPane().setLayout(null);
-		
+
 		JLabel lblArticleCms = new JLabel("Article CMS");
 		lblArticleCms.setBounds(67, 11, 80, 14);
 		frmArticleCms.getContentPane().add(lblArticleCms);
-		
+
 		JButton btnCreateArticle = new JButton("Create");
 		btnCreateArticle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Open the CreateGUI dialog
+				// Open the CreateGUI dialog
 				try {
 					createDialog = new CreateGUI();
-					createDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					createDialog
+							.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					createDialog.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -82,14 +83,15 @@ public class ArticleGUI {
 		});
 		btnCreateArticle.setBounds(10, 59, 184, 23);
 		frmArticleCms.getContentPane().add(btnCreateArticle);
-		
+
 		JButton buttonViewArticle = new JButton("View");
 		buttonViewArticle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					// Open the ViewEditGUI dialog
 					viewDialog = new ViewGUI();
-					viewDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					viewDialog
+							.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					viewDialog.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -98,24 +100,25 @@ public class ArticleGUI {
 		});
 		buttonViewArticle.setBounds(10, 93, 184, 23);
 		frmArticleCms.getContentPane().add(buttonViewArticle);
-		
+
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//closes the app
+				// closes the app
 				System.exit(-1);
 			}
 		});
 		btnClose.setBounds(105, 208, 89, 23);
 		frmArticleCms.getContentPane().add(btnClose);
-		
+
 		JButton buttonEditArticle = new JButton("Edit");
 		buttonEditArticle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					editDialog = new EditGUI();
 					Article.populateEditGUIComboBox();
-					editDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					editDialog
+							.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					editDialog.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -124,7 +127,7 @@ public class ArticleGUI {
 		});
 		buttonEditArticle.setBounds(10, 127, 184, 23);
 		frmArticleCms.getContentPane().add(buttonEditArticle);
-		
+
 		JButton buttonDeleteArticle = new JButton("Delete");
 		buttonDeleteArticle.setBounds(10, 161, 184, 23);
 		frmArticleCms.getContentPane().add(buttonDeleteArticle);

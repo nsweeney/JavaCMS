@@ -50,9 +50,19 @@ public class Article {
 	}
 
 	public static String populateEditGUITextBoxWithContents(int articleNumber) {
-		
-		String articleContents = ArticleStorage.findArticleToEdit(articleNumber);
-		return articleContents;	
+
+		String articleContents = ArticleStorage
+				.findArticleToEdit(articleNumber);
+		return articleContents;
+	}
+
+	public static void updateArticleInDatabase(
+			Integer articleSelectedInComboBox, String updatedArticleContent) {
+
+		// + 1 because if they select '1', its index is actually
+		// 0..that isnt a PK in the article table
+		ArticleStorage.updateArticle(articleSelectedInComboBox + 1,
+				updatedArticleContent);
 	}
 
 	@Override

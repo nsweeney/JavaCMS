@@ -58,8 +58,9 @@ public class ViewGUI extends JDialog {
 				JButton showButton = new JButton("Show");
 				showButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						viewTextArea.setText("");
 						Article.showArticlesFromDB();
-	
+
 					}
 				});
 				showButton.setActionCommand("OK");
@@ -67,7 +68,7 @@ public class ViewGUI extends JDialog {
 				getRootPane().setDefaultButton(showButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Close");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						ArticleGUI.getViewEditDialog().dispose();
