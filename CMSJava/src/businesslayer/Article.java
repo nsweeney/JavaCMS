@@ -103,7 +103,10 @@ public class Article {
 	public static void deleteArticleInDatabase(Integer articleSelectedInComboBox) {
 		ArticleStorage.deleteArticle(articleSelectedInComboBox);
 	}
-
+	
+	/**
+	 * Display information about an Article object.
+	 */
 	@Override
 	public String toString() {
 		return "Article object contents: " + getContents();
